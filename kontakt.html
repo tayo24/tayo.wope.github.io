@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div id="1aa muskel"></div>
+   <ul>
+    
+  </ul>
+      <nav>
+         <li> <a href="über uns.html"> über uns </a></li>
+            <li> <a href="index.html"> back to home </a></li>
+            <link rel="stylesheet" href="b12/style 1.css">
+      <nav>
+</ul>
+<div class="contact-form">
+   <h2 class="contact-form__title">Kontaktiere uns</h2>
+   <form method="post" action="#" onsubmit="sendEmail(event)">
+     <div class="field">
+       <label for="name">Name</label>
+       <input type="text" id="name" name="name" class="field__input" required>
+     </div>
+     <div class="field">
+       <label for="email">E-Mail</label>
+       <input type="email" id="email" name="email" class="field__input" required>
+     </div>
+     <div class="field">
+       <label for="subject">Betreff</label>
+       <input type="text" id="subject" name="subject" class="field__input" required>
+     </div>
+     <div class="field">
+       <label for="message">Nachricht</label>
+       <textarea id="message" name="message" class="field__input field__input--textarea" rows="5" required></textarea>
+     </div>
+     <button type="submit" name="submit" class="button">Senden</button>
+   </form>
+   <p class="contact-form__message" id="status"></p>
+</div>
+
+<script>
+function sendEmail(event) {
+  event.preventDefault(); // prevent form from submitting
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let subject = document.getElementById("subject").value;
+  let message = document.getElementById("message").value;
+  let status = document.getElementById("status");
+  let formData = new FormData();
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("subject", subject);
+  formData.append("message", message);
+  formData.append("to", "tayo.wope.2008@gmail.com");
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "send_email.php");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        status.innerHTML = "Nachricht wurde gesendet";
+        name.value = "";
+        email.value = "";
+        subject.value = "";
+        message.value = "";
+      } else {
+        status.innerHTML = "Fehler beim Senden der Nachricht";
+      }
+    }
+  };                                     
+  xhr.send(formData);
+}
+</script>
+<form method="post" action="send_email.php">
+
+   
+ </div>
+
+      </div>
+
+    <div>
+ 
+
+</div>
+</body>
+</html>
+ 
+   
